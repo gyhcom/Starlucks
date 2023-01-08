@@ -9,7 +9,7 @@ plugins {
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 dependencies {
-    implementation(project(path = ":starlucks-common"))
+    implementation(project(path = ":starlucks-common", configuration = null))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
 }
