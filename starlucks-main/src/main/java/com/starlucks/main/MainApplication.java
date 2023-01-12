@@ -1,12 +1,11 @@
-package com.starlucks.store;
+package com.starlucks.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StoreApplication {
-
+public class MainApplication {
     public static void main(String[] args) {
-        SpringApplication.run(StoreApplication.class, args);
+        SpringApplication.run(MainApplication.class, args);
     }
 }

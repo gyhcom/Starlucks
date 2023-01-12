@@ -19,7 +19,7 @@ subprojects {
         maxWarnings = 0
         version = "10.6.0"
 
-        source ("src/main/java")
+        source("src/main/java")
         include("**/*.java")
     }
 }
