@@ -6,18 +6,14 @@ public class MemberAddCommand {
     private String nickname;
     private String email;
     private String password;
-    private String phoneNumber;
-
 
     public MemberAddCommand(
         String nickname,
         String email,
-        String password,
-        String phoneNumber) {
+        String password) {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
-        this.phoneNumber = phoneNumber;
     }
 
     public String getNickname() {
@@ -32,7 +28,4 @@ public class MemberAddCommand {
         return password;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
 }
