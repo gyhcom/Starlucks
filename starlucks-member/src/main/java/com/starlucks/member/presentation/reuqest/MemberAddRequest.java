@@ -5,24 +5,17 @@ import com.starlucks.member.application.command.MemberAddCommand;
 public class MemberAddRequest {
     private String nickname;
     private String email;
-
-
     private String password;
 
 
-
-    private String phonenumber;
-
-
-    public MemberAddRequest(String email, String password, String nickname, String phoneNumber) {
+    public MemberAddRequest(String email, String password, String nickname) {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
-        this.phonenumber = phoneNumber;
     }
 
     public MemberAddCommand toCommand() {
-        return new MemberAddCommand(email, password, nickname, phonenumber);
+        return new MemberAddCommand(nickname, email, password);
     }
 
     public String getNickname() {
@@ -35,10 +28,6 @@ public class MemberAddRequest {
 
     public String getPassword() {
         return password;
-    }
-
-    public String getPhonenumber() {
-        return phonenumber;
     }
 
 }
