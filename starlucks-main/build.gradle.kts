@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("mysql:mysql-connector-java")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.mockito:mockito-junit-jupiter:4.11.0")
