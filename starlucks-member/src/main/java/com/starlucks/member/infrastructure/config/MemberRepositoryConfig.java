@@ -1,13 +1,16 @@
 package com.starlucks.member.infrastructure.config;
 
+import com.starlucks.member.domain.repository.MemberRepository;
+import com.starlucks.member.infrastructure.MemberRepositoryAdapter;
 import com.starlucks.member.infrastructure.persistence.InMemoryMemberAddRepository;
+import com.starlucks.member.infrastructure.persistence.JpaMemberRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MemberRepositoryConfig {
     @Bean
-    public InMemoryMemberAddRepository inMemoryMemberAddRepository() {
-        return new InMemoryMemberAddRepository();
+    public MemberRepository memberRepository(JpaMemberRepository jpaMemberRepository) {
+        return new MemberRepositoryAdapter(jpaMemberRepository);
     }
 }

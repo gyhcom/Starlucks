@@ -4,6 +4,6 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:13306/starlucks?useSSL=false
+    url: jdbc:mysql://localhost:13306/starlucks?allowPublicKeyRetrieval=true&useSSL=false
     username: root
     password: root
