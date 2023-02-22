@@ -2,6 +2,7 @@ package com.starlucks.member.presentation.reuqest;
 
 import com.starlucks.member.application.command.MemberAddCommand;
 
+
 public class MemberAddRequest {
     private String nickname;
     private String email;
@@ -12,6 +13,10 @@ public class MemberAddRequest {
         this.nickname = nickname;
         this.email = email;
         this.password = password;
+    }
+
+    public MemberAddRequest() {
+
     }
 
     public MemberAddCommand toCommand() {
