@@ -2,8 +2,7 @@ package com.starlucks.member.infrastructure;
 
 import com.starlucks.member.domain.entity.Member;
 import com.starlucks.member.domain.repository.MemberRepository;
-import com.starlucks.member.infrastructure.persistence.JpaMemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.starlucks.member.infrastructure.persistence.jpa.JpaMemberRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

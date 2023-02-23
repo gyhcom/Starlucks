@@ -2,8 +2,7 @@ package com.starlucks.member.infrastructure.config;
 
 import com.starlucks.member.domain.repository.MemberRepository;
 import com.starlucks.member.infrastructure.MemberRepositoryAdapter;
-import com.starlucks.member.infrastructure.persistence.InMemoryMemberAddRepository;
-import com.starlucks.member.infrastructure.persistence.JpaMemberRepository;
+import com.starlucks.member.infrastructure.persistence.jpa.JpaMemberRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 

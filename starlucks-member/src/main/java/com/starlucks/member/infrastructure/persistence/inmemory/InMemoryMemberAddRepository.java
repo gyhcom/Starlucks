@@ -1,4 +1,4 @@
-package com.starlucks.member.infrastructure.persistence;
+package com.starlucks.member.infrastructure.persistence.inmemory;
 
 import com.starlucks.member.domain.entity.Member;
 import com.starlucks.member.domain.repository.MemberRepository;
