@@ -19,8 +19,8 @@ public class MemberAddCommand {
     public Member toEntity(String password) {
         return new Member(
             this.email,
-            password,
-            this.nickname
+            this.nickname,
+            password
         );
     }
 
