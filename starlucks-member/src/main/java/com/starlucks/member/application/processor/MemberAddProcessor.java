@@ -24,7 +24,6 @@ public final class MemberAddProcessor {
     public MemberResult execute(MemberAddCommand command) {
         String encodePassword = passwordEncoder.encode(command.getPassword());
         var member = memberRepository.save(command.toEntity(encodePassword));
-        System.out.println(encodePassword);
         return MemberResult.result(member);
     }
 }
