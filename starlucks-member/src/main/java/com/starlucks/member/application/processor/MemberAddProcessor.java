@@ -1,30 +1,29 @@
 package com.starlucks.member.application.processor;
 
 import com.starlucks.member.application.command.MemberAddCommand;
+import com.starlucks.member.application.result.MemberResult;
 import com.starlucks.member.domain.IdGenerator;
 import com.starlucks.member.domain.entity.Member;
 import com.starlucks.member.domain.repository.MemberRepository;
-import com.starlucks.member.infrastructure.generator.MemberIdGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public final class MemberAddProcessor {
 
     private final MemberRepository memberRepository;
-    private final MemberIdGenerator memberIdGenerator;
+    private static PasswordEncoder passwordEncoder;
 
     public MemberAddProcessor(
         MemberRepository memberRepository,
-        MemberIdGenerator memberIdGenerator
+        PasswordEncoder passwordEncoder
     ) {
         this.memberRepository = memberRepository;
-        this.memberIdGenerator = memberIdGenerator;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public void execute(MemberAddCommand command) {
-        memberRepository.save(
-            Member.from(memberIdGenerator.generate(),
-                command.getNickname(),
-                command.getEmail(),
-                command.getPassword())
-        );
+    public MemberResult execute(MemberAddCommand command) {
+        String encodePassword = passwordEncoder.encode(command.getPassword());
+        var member = memberRepository.save(command.toEntity(encodePassword));
+        return MemberResult.result(member);
     }
 }

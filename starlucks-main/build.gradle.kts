@@ -4,9 +4,12 @@ plugins {
 }
 
 dependencies {
+    implementation(project(path = ":starlucks-member"))
     implementation(project(path = ":starlucks-payment"))
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("mysql:mysql-connector-java")
+    implementation("org.flywaydb:flyway-core:9.8.1")
+    implementation("org.flywaydb:flyway-mysql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.mockito:mockito-junit-jupiter:4.11.0")
