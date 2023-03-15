@@ -1,7 +1,7 @@
 package com.starlucks.payment.infrastructure.config;
 
 import com.starlucks.payment.application.CompositionPayment;
-import com.starlucks.payment.application.processor.PaymentProcessor;
+import com.starlucks.payment.application.processor.RequestPaymentProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class PaymentConfig {
 
     @Bean
-    public PaymentProcessor paymentProcessor(CompositionPayment paymentFactory) {
-        return new PaymentProcessor(paymentFactory);
+    public RequestPaymentProcessor paymentProcessor(CompositionPayment paymentFactory) {
+        return new RequestPaymentProcessor(paymentFactory);
     }
 }

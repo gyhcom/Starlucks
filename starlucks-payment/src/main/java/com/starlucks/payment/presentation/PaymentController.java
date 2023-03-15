@@ -1,6 +1,6 @@
 package com.starlucks.payment.presentation;
 
-import com.starlucks.payment.application.facade.PaymentFacade;
+import com.starlucks.payment.application.facade.PaymentManager;
 import com.starlucks.payment.presentation.request.PaymentPayRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/payment")
 public final class PaymentController {
 
-    private final PaymentFacade paymentFacade;
+    private final PaymentManager paymentFacade;
 
-    public PaymentController(PaymentFacade paymentFacade) {
+    public PaymentController(PaymentManager paymentFacade) {
         this.paymentFacade = paymentFacade;
     }
 
