@@ -1,15 +1,15 @@
 package com.starlucks.payment.application.facade;
 
 import com.starlucks.payment.application.command.PaymentPayCommand;
-import com.starlucks.payment.application.processor.PaymentProcessor;
+import com.starlucks.payment.application.processor.RequestPaymentProcessor;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PaymentFacade {
+public class PaymentManager {
 
-    private final PaymentProcessor paymentProcessor;
+    private final RequestPaymentProcessor paymentProcessor;
 
-    public PaymentFacade(PaymentProcessor paymentProcessor) {
+    public PaymentManager(RequestPaymentProcessor paymentProcessor) {
         this.paymentProcessor = paymentProcessor;
     }
 
