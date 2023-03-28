@@ -3,6 +3,7 @@ package com.starlucks.member.presentation;
 import com.starlucks.common.response.CommonApiResponse;
 import com.starlucks.member.application.fasade.MemberManager;
 import com.starlucks.member.presentation.reponse.MemberResponse;
+import com.starlucks.member.presentation.reuqest.LoginUserRequest;
 import com.starlucks.member.presentation.reuqest.MemberAddRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,5 +21,11 @@ public class MemberController {
     public CommonApiResponse<MemberResponse> signUp(@RequestBody MemberAddRequest request) {
         var member = memberManager.memberCreate(request.toCommand());
         return CommonApiResponse.success(MemberResponse.form(member));
+    }
+
+    @PostMapping(value = "/login", name = "회원 로그인")
+    public CommonApiResponse<String> login(@RequestBody LoginUserRequest request) {
+        var member = memberManager.login(request.toCommand());
+        return CommonApiResponse.success(member);
     }
 }
