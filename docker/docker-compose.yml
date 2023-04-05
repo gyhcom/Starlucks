@@ -3,7 +3,7 @@ services:
   db:
     platform: linux/x86_64
     image: library/mysql:8.0.23
-    container_name: starlucks-db
+    container_name: starlucks-mysql
     restart: always
     command:
       - --character-set-server=utf8mb4
@@ -13,3 +13,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       TZ: Asia/Seoul
+  redis:
+    container_name: starlucks-redis
+    image: redis:7.0.10
+    ports:
+      - "16379:6379"

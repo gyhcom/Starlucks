@@ -2,7 +2,10 @@ package com.starlucks.member.infrastructure.config;
 
 import com.starlucks.member.application.processor.MemberAddProcessor;
 import com.starlucks.member.application.processor.MemberLoginProcessor;
+import com.starlucks.member.domain.MemberToken;
 import com.starlucks.member.domain.repository.MemberRepository;
+import com.starlucks.member.domain.repository.TokenRepository;
+import com.starlucks.member.infrastructure.MemberTokenGenerator;
 import com.starlucks.member.infrastructure.membersecurity.MemberPassWordEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,10 +23,14 @@ public class MemberConfig {
 
     @Bean
     public MemberLoginProcessor memberLoginProcessor(
-        MemberRepository memberRepository
+        MemberRepository memberRepository,
+        MemberToken memberToken,
+        TokenRepository tokenRepository
     ) {
         return new MemberLoginProcessor(
             memberRepository,
+            memberToken,
+            tokenRepository,
             new MemberPassWordEncoder(memberEncoder())
         );
     }
@@ -38,5 +45,12 @@ public class MemberConfig {
     @Bean
     public PasswordEncoder memberEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public MemberToken memberToken(
+        TokenRepository tokenRepository
+    ) {
+        return new MemberTokenGenerator(tokenRepository);
     }
 }

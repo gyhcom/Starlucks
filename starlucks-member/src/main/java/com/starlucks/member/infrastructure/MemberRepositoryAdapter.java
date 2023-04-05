@@ -20,7 +20,8 @@ public class MemberRepositoryAdapter implements MemberRepository {
     }
 
     @Override
-    public Optional<Member> findByEmail(String email) {
-        return this.jpaMemberRepository.findByEmail(email);
+    public Member findByEmail(String email) {
+        return this.jpaMemberRepository.findByEmail(email)
+            .orElseThrow(()-> new NullPointerException("가입되지 않은 회원입니다."));
     }
 }
