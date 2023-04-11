@@ -11,11 +11,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 @Configuration
 public class RedisConfig {
-    @Value("localhost")
-    //@Value("${spring.redis.session.host}")
+    @Value("${spring.redis.session.host}")
     private String redisHost;
-    @Value("16379")
-    //@Value("${spring.redis.session.port}")
+    @Value("${spring.redis.session.port}")
     private int redisPort;
 
     //redisTemplate 만들어서 빈으로 등록해야함

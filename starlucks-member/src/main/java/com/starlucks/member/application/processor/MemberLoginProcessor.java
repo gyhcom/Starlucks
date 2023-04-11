@@ -2,12 +2,13 @@ package com.starlucks.member.application.processor;
 
 import com.starlucks.common.auth.AuthMember;
 import com.starlucks.common.auth.EncryptionPassword;
+import com.starlucks.common.exception.ErrorCode;
 import com.starlucks.member.application.command.MemberLoginCommand;
 import com.starlucks.member.domain.MemberToken;
 import com.starlucks.member.domain.entity.Member;
+import com.starlucks.member.domain.exception.MemberException;
 import com.starlucks.member.domain.repository.MemberRepository;
 import com.starlucks.member.domain.repository.TokenRepository;
-import com.starlucks.member.infrastructure.membersecurity.MemberPassWordEncoder;
 import java.time.LocalDate;
 
 public class MemberLoginProcessor {
@@ -35,7 +36,7 @@ public class MemberLoginProcessor {
         var member = memberRepository.findByEmail(command.getEmail());
 
         if (member == null) {
-            throw new NullPointerException("잘못된 회원입니다.");
+            throw new MemberException(ErrorCode.INVALID_USER);
         }
 
         var token = memberToken.generate();

@@ -7,6 +7,7 @@ import com.starlucks.member.presentation.reuqest.LoginUserRequest;
 import com.starlucks.member.presentation.reuqest.MemberAddRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @MemberRestController
 public class MemberController {
@@ -27,5 +28,11 @@ public class MemberController {
     public CommonApiResponse<String> login(@RequestBody LoginUserRequest request) {
         var member = memberManager.login(request.toCommand());
         return CommonApiResponse.success(member);
+    }
+
+    @PostMapping(value = "/logout", name = "회원 로그아웃")
+    public CommonApiResponse<String> logout(@RequestHeader String authorization) {
+        System.out.println("=========");
+        return CommonApiResponse.success("ok");
     }
 }

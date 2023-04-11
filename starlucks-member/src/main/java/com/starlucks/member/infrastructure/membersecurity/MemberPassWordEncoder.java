@@ -15,4 +15,9 @@ public class MemberPassWordEncoder implements EncryptionPassword {
     public String encrypt(String password) {
         return encoder.encode(password);
     }
+
+    @Override
+    public boolean matches(String memberPass, String encryptPass) {
+        return encoder.matches(memberPass, encryptPass);
+    }
 }
