@@ -2,6 +2,7 @@ package com.starlucks.member.infrastructure.config;
 
 import com.starlucks.member.application.processor.MemberAddProcessor;
 import com.starlucks.member.application.processor.MemberLoginProcessor;
+import com.starlucks.member.application.processor.MemberLogoutProcessor;
 import com.starlucks.member.domain.MemberToken;
 import com.starlucks.member.domain.repository.MemberRepository;
 import com.starlucks.member.domain.repository.TokenRepository;
@@ -35,6 +36,10 @@ public class MemberConfig {
         );
     }
 
+    @Bean
+    public MemberLogoutProcessor memberLogoutProcessor(TokenRepository tokenRepository) {
+        return new MemberLogoutProcessor(tokenRepository);
+    }
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {

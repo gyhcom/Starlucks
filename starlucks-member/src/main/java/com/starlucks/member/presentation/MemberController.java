@@ -8,6 +8,7 @@ import com.starlucks.member.presentation.reuqest.MemberAddRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @MemberRestController
 public class MemberController {
@@ -32,7 +33,7 @@ public class MemberController {
 
     @PostMapping(value = "/logout", name = "회원 로그아웃")
     public CommonApiResponse<String> logout(@RequestHeader String authorization) {
-        System.out.println("=========");
+        memberManager.logout(authorization.replace("Bearer ", ""));
         return CommonApiResponse.success("ok");
     }
 }

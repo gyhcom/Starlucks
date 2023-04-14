@@ -19,7 +19,7 @@ public class TokenRepositoryAdapter implements TokenRepository {
     }
 
     @Override
-    public void remove() {
-
+    public void remove(String token) {
+        this.repository.remove(token);
     }
 }

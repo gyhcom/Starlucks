@@ -28,4 +28,8 @@ public class RedisMemberRepository {
             authMember.getAuthId(),
             authMember);
     }
+
+    public void remove(String token) {
+        redisTemplate.delete(token);
+    }
 }

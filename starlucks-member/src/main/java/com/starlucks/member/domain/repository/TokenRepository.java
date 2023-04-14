@@ -8,6 +8,6 @@ public interface TokenRepository {
 
     void save(AuthMember authMember);
 
-    void remove();
+    void remove(String token);
 
 }
