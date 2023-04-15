@@ -31,7 +31,7 @@ public class MemberManager {
     }
 
     public String login(MemberLoginCommand toCommand) {
-        return memberLoginProcessor.excute(toCommand);
+        return memberLoginProcessor.execute(toCommand);
     }
 
     public void logout(String token) {

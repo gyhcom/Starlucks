@@ -4,7 +4,8 @@ public enum ErrorCode {
     DUPLICATED_EMAIL("사용중인 이메일입니다."),
 
     //Member Error Code
-    INVALID_USER("유효하지 않은 회원입니다.");
+    INVALID_USER("유효하지 않은 회원입니다."),
+    PASSWORD_NOT_MATCHED("패스워드가 맞지 않습니다.");
 
     private final  String message;
 
