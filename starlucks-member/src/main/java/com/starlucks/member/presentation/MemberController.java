@@ -5,6 +5,7 @@ import com.starlucks.member.application.fasade.MemberManager;
 import com.starlucks.member.presentation.reponse.MemberResponse;
 import com.starlucks.member.presentation.reuqest.LoginUserRequest;
 import com.starlucks.member.presentation.reuqest.MemberAddRequest;
+import com.starlucks.member.presentation.reuqest.MemberEmailRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -36,4 +37,11 @@ public class MemberController {
         memberManager.logout(authorization.replace("Bearer ", ""));
         return CommonApiResponse.success("ok");
     }
+
+    @PostMapping(value = "/email/check", name = "중복 메일 체크")
+    public CommonApiResponse<String> checkEmail(@RequestBody MemberEmailRequest email) {
+        memberManager.checkEmail(email.getEmail());
+        return CommonApiResponse.success("ok");
+    }
+
 }

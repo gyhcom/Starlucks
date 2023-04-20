@@ -26,4 +26,9 @@ public class MemberRepositoryAdapter implements MemberRepository {
         return this.jpaMemberRepository.findByEmail(email)
             .orElseThrow(()-> new MemberException(ErrorCode.INVALID_USER));
     }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return this.jpaMemberRepository.existsByEmail(email);
+    }
 }
