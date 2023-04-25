@@ -2,6 +2,7 @@ package com.starlucks.common.auth;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class AuthMember implements Serializable {
 
@@ -11,7 +12,7 @@ public class AuthMember implements Serializable {
 
     private String email;
 
-    private LocalDate expireAt;
+    private LocalDateTime expireAt;
 
     protected  AuthMember() {
 
@@ -36,7 +37,7 @@ public class AuthMember implements Serializable {
         return email;
     }
 
-    public LocalDate getExpireAt() {
+    public LocalDateTime getExpireAt() {
         return expireAt;
     }
 
@@ -57,7 +58,7 @@ public class AuthMember implements Serializable {
             return this;
         }
 
-        public Builder setExpireAt(LocalDate expireAt) {
+        public Builder setExpireAt(LocalDateTime expireAt) {
             this.expireAt = expireAt;
             return this;
         }
@@ -73,6 +74,6 @@ public class AuthMember implements Serializable {
 
         private String email;
 
-        private LocalDate expireAt;
+        private LocalDateTime expireAt;
     }
 }

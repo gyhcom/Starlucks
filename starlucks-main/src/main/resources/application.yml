@@ -24,3 +24,6 @@ spring:
       host: localhost
       port: 16379
 
+app.security.token:
+  tokenExpireSec: 1000
+  sessionExpireSec: 1000

@@ -11,6 +11,7 @@ import com.starlucks.member.domain.exception.MemberPasswordNotException;
 import com.starlucks.member.domain.repository.MemberRepository;
 import com.starlucks.member.domain.repository.TokenRepository;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class MemberLoginProcessor {
 
@@ -18,19 +19,21 @@ public class MemberLoginProcessor {
     private final MemberToken memberToken;
     private final TokenRepository tokenRepository;
     private final EncryptionPassword encryptionPassword;
-    private Member member;
 
+    private final Long tokenExpireSec;
     public MemberLoginProcessor(
         MemberRepository memberRepository,
         MemberToken memberToken,
         TokenRepository tokenRepository,
-        EncryptionPassword encryptionPassword
+        EncryptionPassword encryptionPassword,
+        Long tokenExpireSec
     ) {
 
         this.memberRepository = memberRepository;
         this.memberToken = memberToken;
         this.tokenRepository = tokenRepository;
         this.encryptionPassword = encryptionPassword;
+        this.tokenExpireSec = tokenExpireSec;
     }
 
     public String execute(MemberLoginCommand command) {
@@ -50,7 +53,7 @@ public class MemberLoginProcessor {
             new AuthMember.Builder(member.getId())
                 .setAuthId(token)
                 .setEmail(member.getEmail())
-                .setExpireAt(LocalDate.now())
+                .setExpireAt(LocalDateTime.now().plusSeconds(tokenExpireSec))
                 .build()
         );
 

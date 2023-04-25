@@ -8,6 +8,7 @@ import com.starlucks.member.domain.repository.MemberRepository;
 import com.starlucks.member.domain.repository.TokenRepository;
 import com.starlucks.member.infrastructure.MemberTokenGenerator;
 import com.starlucks.member.infrastructure.membersecurity.MemberPassWordEncoder;
+import com.starlucks.member.infrastructure.properties.TokenProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -26,13 +27,15 @@ public class MemberConfig {
     public MemberLoginProcessor memberLoginProcessor(
         MemberRepository memberRepository,
         MemberToken memberToken,
-        TokenRepository tokenRepository
+        TokenRepository tokenRepository,
+        TokenProperties tokenProperties
     ) {
         return new MemberLoginProcessor(
             memberRepository,
             memberToken,
             tokenRepository,
-            new MemberPassWordEncoder(memberEncoder())
+            new MemberPassWordEncoder(memberEncoder()),
+            tokenProperties.getTokenExpirationSec()
         );
     }
 
