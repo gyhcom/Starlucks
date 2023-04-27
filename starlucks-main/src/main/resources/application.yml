@@ -24,3 +24,6 @@ spring:
       host: localhost
       port: 16379
 
+app.redis.token:
+  tokenExpireSec: 300
+  sessionExpirationSec: 1000
